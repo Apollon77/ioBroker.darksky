@@ -21,6 +21,7 @@ function startAdapter(options) {
 
 	adapter.on('unload', function(callback) {
 		adapter.log.info('[END] Stopping DarkSky adapter...');
+		callback && callback();
 	});
 
 	adapter.on('ready', function() {

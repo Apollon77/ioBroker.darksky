@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "darksky",
-		"version": "0.2.0",
+		"version": "0.2.1",
 		"news": {
 			"0.2.0": {
 				"en": "Moved code to ioblib\nfixed minor bugs\nadded summary states",
