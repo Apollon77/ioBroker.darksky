@@ -37,19 +37,19 @@ function startAdapter(options) {
 					//noinspection JSUnresolvedVariable
 					adapter.config.secretKey = ioBLib.decrypt('ZgfrC6gFeD1jJOM', adapter.config.secretKey);
 				}
-				
+
 				if(obj && obj.common) {
 					adapter.config.iob_lon = obj.common.longitude;
 					adapter.config.iob_lat = obj.common.latitude;
 				}
-				
-				
+
+
 				if(!adapter.config.iob_lon || !adapter.config.iob_lat) {
 					adapter.log.warn('Could not start adapter because the system\'s longitude and latitude were not found. Please check system config.');
 					adapter.stop();
 					return;
 				}
-				
+
 				main();
 			});
 		}
@@ -70,15 +70,16 @@ function main() {
 			adapter.stop();
 			return;
 		}
-		
+
 		body = JSON.parse(body);
-		
+
 		ioBLib.setOrUpdateState('latitude', 'Latitude', body.latitude, '°', 'number', 'value.gps.latitude');
 		ioBLib.setOrUpdateState('longitude', 'Longitude', body.longitude, '°', 'number', 'value.gps.longitude');
 		ioBLib.setOrUpdateState('timezone', 'Time zone', body.timezone, '', 'string', 'text');
-		
+
 		ioBLib.setOrUpdateState('current.time', 'Time of values', (body.currently.time * 1000), '', 'number', 'date');
 
+		ioBLib.setOrUpdateState('current.summary', 'Weather', body.currently.summary, '','string', 'text');
 		ioBLib.setOrUpdateState('current.icon', 'Weather icon', body.currently.icon, '', 'string', 'text');
 		ioBLib.setOrUpdateState('current.precipIntensity', 'Precipitation intensity', body.currently.precipIntensity, 'mm/h', 'number', 'value');
 		ioBLib.setOrUpdateState('current.precipProbability', 'Precipitation probability', (body.currently.precipProbability * 100), '%', 'number', 'value.probability');
@@ -86,7 +87,7 @@ function main() {
 		ioBLib.setOrUpdateState('current.temperature', 'Temperature', body.currently.temperature, '°C', 'number', 'value.temperature');
 		ioBLib.setOrUpdateState('current.apparentTemperature', 'Apparent temperature', body.currently.apparentTemperature, '°C', 'number', 'value.temperature');
 		ioBLib.setOrUpdateState('current.dewPoint', 'Dew point', body.currently.dewPoint, '°C', 'number', 'value.temperature');
-		ioBLib.setOrUpdateState('current.humidity', 'Hunidity', (body.currently.humidity * 100), '%', 'number', 'value.humidity');
+		ioBLib.setOrUpdateState('current.humidity', 'Humidity', (body.currently.humidity * 100), '%', 'number', 'value.humidity');
 		ioBLib.setOrUpdateState('current.pressure', 'Pressure', body.currently.pressure, 'hPa', 'number', 'value.pressure');
 		ioBLib.setOrUpdateState('current.windSpeed', 'Wind speed', body.currently.windSpeed, 'm/s', 'number', 'value.speed');
 		ioBLib.setOrUpdateState('current.windGust', 'Wind gust', body.currently.windGust, 'm/s', 'number', 'value.speed');
@@ -95,6 +96,8 @@ function main() {
 		ioBLib.setOrUpdateState('current.uvIndex', 'UV index', body.currently.uvIndex, '', 'number', 'value');
 		ioBLib.setOrUpdateState('current.visibility', 'Visibility', body.currently.visibility, 'km', 'number', 'value.distance.visibility');
 		ioBLib.setOrUpdateState('current.ozone', 'Ozone', body.currently.ozone, 'DU', 'number', 'value');
+
+		ioBLib.setOrUpdateState('hourly.summary', 'Weather', body.hourly.summary, '','string', 'text');
 
 		let i = 0;
 		body.hourly.data.forEach(function(value) {
@@ -117,10 +120,12 @@ function main() {
 			ioBLib.setOrUpdateState('hourly.' + i + '.uvIndex', 'UV index', value.uvIndex, '', 'number', 'value');
 			ioBLib.setOrUpdateState('hourly.' + i + '.visibility', 'Visibility', value.visibility, 'km', 'number', 'value.distance.visibility');
 			ioBLib.setOrUpdateState('hourly.' + i + '.ozone', 'Ozone', value.ozone, 'DU', 'number', 'value');
-				
+
 			i++;
 		});
-		
+
+		ioBLib.setOrUpdateState('daily.summary', 'Weather', body.daily.summary, '','string', 'text');
+
 		i = 0;
 		body.daily.data.forEach(function(value) {
 			ioBLib.setOrUpdateState('daily.' + i + '.time', 'Time of values', (value.time * 1000), '', 'number', 'date');
@@ -131,7 +136,7 @@ function main() {
 			ioBLib.setOrUpdateState('daily.' + i + '.sunriseTime', 'Time of sunrise', (value.sunriseTime * 1000), '', 'number', 'date');
 			ioBLib.setOrUpdateState('daily.' + i + '.sunsetTime', 'Time of sunset', (value.sunsetTime * 1000), '', 'number', 'date');
 			ioBLib.setOrUpdateState('daily.' + i + '.moonPhase', 'Moon phase', (value.moonPhase * 100), '%', 'number', 'value');
-			
+
 			ioBLib.setOrUpdateState('daily.' + i + '.precipIntensity', 'Precipitation intensity', value.precipIntensity, 'mm/h', 'number', 'value');
 			ioBLib.setOrUpdateState('daily.' + i + '.precipIntensityMax', 'Max. precipitation intensity', value.precipIntensityMax, 'mm/h', 'number', 'value');
 			ioBLib.setOrUpdateState('daily.' + i + '.precipIntensityMaxTime', 'Max precipitation time', (value.precipIntensityMaxTime * 1000), '', 'number', 'date');
@@ -165,10 +170,10 @@ function main() {
 			ioBLib.setOrUpdateState('daily.' + i + '.uvIndexTime', 'UV index time', (value.uvIndex * 1000), '', 'number', 'date');
 			ioBLib.setOrUpdateState('daily.' + i + '.visibility', 'Visibility', value.visibility, 'km', 'number', 'value.distance.visibility');
 			ioBLib.setOrUpdateState('daily.' + i + '.ozone', 'Ozone', value.ozone, 'DU', 'number', 'value');
-				
+
 			i++;
 		});
-		
+
 		setTimeout(function() {
 			adapter.stop();
 		}, 5000);

@@ -1,5 +1,10 @@
 ![Logo](admin/darksky.png)
 
+![Number of Installations](http://iobroker.live/badges/darksky-installed.svg) [![Downloads](https://img.shields.io/npm/dm/iobroker.darksky.svg)](https://www.npmjs.com/package/iobroker.darksky)
+
+[![NPM](https://nodei.co/npm/iobroker.darksky.png?downloads=true)](https://nodei.co/npm/iobroker.darksky/)
+
+![Stable](http://iobroker.live/badges/darksky-stable.svg)
 [![NPM version](https://img.shields.io/npm/v/iobroker.darksky.svg)](https://www.npmjs.com/package/iobroker.darksky)
 [![Build Status](https://travis-ci.org/StrathCole/ioBroker.darksky.svg?branch=master)](https://travis-ci.org/StrathCole/ioBroker.darksky)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StrathCole/iobroker.darksky/blob/master/LICENSE)
