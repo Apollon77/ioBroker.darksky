@@ -1,8 +1,20 @@
 {
 	"common": {
 		"name": "darksky",
-		"version": "0.1.0",
+		"version": "0.2.0",
 		"news": {
+			"0.2.0": {
+				"en": "Moved code to ioblib\nfixed minor bugs\nadded summary states",
+				"de": "Code nach ioblib verschoben\nkleinere Fehler behoben\nZusammenfassungszustände hinzugefügt",
+				"ru": "Перемещенный код в ioblib\nисправлены мелкие ошибки\nдобавлены сводные состояния",
+				"pt": "Código movido para ioblib\nbugs menores corrigidos\nestados de resumo adicionados",
+				"nl": "Code verplaatst naar ioblib\nkleine bugs opgelost\nsamengevatte staten toegevoegd",
+				"fr": "Code déplacé vers ioblib\ncorrection de bugs mineurs\nétats récapitulatifs ajoutés",
+				"it": "Codice spostato su ioblib\ncorretti bug minori\nstati di riepilogo aggiunti",
+				"es": "Código movido a ioblib\nerrores menores corregidos\nestados de resumen agregados",
+				"pl": "Przeniesiono kod do ioblib\nnaprawiono drobne błędy\ndodano stany podsumowujące",
+				"zh-cn": "将代码移至ioblib\n修复了小错误\n添加了摘要状态"
+			},
 			"0.1.0": {
 				"en": "Initial version",
 				"de": "Initiale Version",
@@ -18,10 +30,28 @@
 		},
 		"title": "DarkSky weather forecast",
 		"titleLang": {
-			"en": "DarkSky weather forecast"
+			"en": "DarkSky weather forecast",
+			"de": "DarkSky Wettervorhersage",
+			"ru": "Прогноз погоды в Даркском",
+			"pt": "Previsão do tempo DarkSky",
+			"nl": "DarkSky weersvoorspelling",
+			"fr": "Prévisions météo pour DarkSky",
+			"it": "Previsioni del tempo DarkSky",
+			"es": "Pronóstico del tiempo DarkSky",
+			"pl": "Prognoza pogody DarkSky",
+			"zh-cn": "DarkSky天气预报"
 		},
 		"desc": {
-			"en": "Adapter to get weather forecast from darksky"
+			"en": "Adapter to get weather forecast from DarkSky",
+			"de": "Adapter zum Abrufen der Wettervorhersage von DarkSky",
+			"ru": "Адаптер для получения прогноза погоды от DarkSky",
+			"pt": "Adaptador para obter previsão do tempo no DarkSky",
+			"nl": "Adapter om weersvoorspelling van DarkSky te krijgen",
+			"fr": "Adaptateur pour obtenir les prévisions météorologiques de DarkSky",
+			"it": "Adattatore per ottenere previsioni meteo da DarkSky",
+			"es": "Adaptador para obtener el pronóstico del tiempo de DarkSky",
+			"pl": "Adapter do otrzymywania prognozy pogody od DarkSky",
+			"zh-cn": "适配器从DarkSky获取天气预报"
 		},
 		"authors": [
 			"Marius Burkard <m.burkard@pixcept.de>"

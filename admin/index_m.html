@@ -96,7 +96,7 @@
             });
 			
 			if(!obj['secretKey']) {
-				showError(_('Please provide a DarkSky API key, which can be applied for here: <a href="https://darksky.net/dev/register" target="_blank">https://darksky.net/dev/register</a>.'));
+				showError(_('Please provide a DarkSky API key, which can be applied for here:') + ' <a href="https://darksky.net/dev/register" target="_blank">https://darksky.net/dev/register</a>.');
 				return;
 			} else if(!obj['iob_lon'] || !obj['iob_lat']) {
 				showError(_('Please set the location of your ioBroker instance (longitude and latitude) in the global system config.'));

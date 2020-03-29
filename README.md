@@ -11,10 +11,16 @@
 
 # ioBroker.darksky
 
-
 An ioBroker adapter for DarkSky weather forecast API
 
+
 ## Changelog
+
+### 0.2.0
+
+-  Moved code to ioblib
+-  fixed minor bugs
+-  (Sven Steckmann) added summary states
 
 ### 0.1.0
 
